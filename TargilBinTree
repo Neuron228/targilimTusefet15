@@ -1,0 +1,21 @@
+public static void reverseTree(BinNode<Integer> bn){
+        BinNode<Integer> bn2;
+       if(bn.hasLeft() || bn.hasRight()){
+           if(bn.hasLeft() && bn.hasRight()){
+               bn2=bn.getLeft();
+               bn.setLeft(bn.getRight());
+               bn.setRight(bn2);
+           }
+           if(bn.hasLeft() && !bn.hasRight()){
+               bn.setRight(bn.getLeft());
+               bn.setLeft(null);
+           }
+           if(!bn.hasLeft() && bn.hasRight()){
+               bn.setLeft(bn.getRight());
+               bn.setRight(null);
+           }
+
+           reverseTree(bn.getLeft());
+           reverseTree(bn.getRight());
+       }
+    }
