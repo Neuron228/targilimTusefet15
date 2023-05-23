@@ -1,0 +1,31 @@
+public static int HighLength(Node<Point> nd, int h) {
+        if (nd == null){
+            return -1;
+        }
+        int length = 0;
+        int max;
+        while (nd != null) {
+            if (nd.getValue().getY() == h) {
+                max = 1;
+                nd = nd.getNext();
+
+                    while (nd.getValue().getY() == h) {
+                        max += 1;
+                        if(nd.getNext() == null){
+                            if (max > length)
+                                length = max;
+
+                            return length;
+                        }else
+                         nd = nd.getNext();
+                    }
+                    if (max > length)
+                        length = max;
+
+            } else {
+
+                 nd = nd.getNext();
+            }
+        }
+        return length;
+    }
