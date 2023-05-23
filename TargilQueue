@@ -1,0 +1,29 @@
+public static Queue<Integer> QueueChanger(Queue<Integer> q1) {
+        Queue<Integer> tmpQueue = new Queue<>();
+        boolean ole;
+
+        int first = q1.remove();
+        tmpQueue.insert(first);
+
+        if(first < q1.head()) {
+            ole = true;
+        } else ole = false;
+
+        while (!q1.isEmpty()) {
+            int num = q1.remove();
+            tmpQueue.insert(num);
+
+            if (!q1.isEmpty()) {
+                if (num > q1.head() && ole) {
+                    ole = false;
+                    tmpQueue.insert(num);
+                }
+                if (!ole && num < q1.head()) {
+                    ole = true;
+                    tmpQueue.insert(num);
+                }
+            }
+        }
+
+        return tmpQueue;
+    }
